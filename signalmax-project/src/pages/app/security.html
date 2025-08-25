@@ -1,0 +1,70 @@
+<!-- File: src/pages/app/security.html -->
+<!-- Versi Refactor: 2.0 -->
+<!-- Perubahan: Header, form input, dan tombol disesuaikan untuk konsistensi UI. -->
+<div class="bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <!-- Header Halaman -->
+    <div class="p-4 sticky top-0 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-sm z-10 flex items-center space-x-4">
+        <button id="back-to-profile-btn" class="text-xl h-10 w-10 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors" aria-label="Kembali ke profil">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="text-xl font-bold text-gray-800 dark:text-white">Keamanan</h1>
+    </div>
+
+    <!-- Konten Keamanan -->
+    <div class="p-4 space-y-6">
+        <div>
+            <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Ubah Password</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                Gunakan password yang kuat dan unik untuk menjaga keamanan akun Anda.
+            </p>
+        </div>
+
+        <!-- Form Ubah Password -->
+        <div class="space-y-4">
+            <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                    <i class="fas fa-lock-open text-gray-400"></i>
+                </span>
+                <input type="password" id="current-password" placeholder="Password Saat Ini" class="w-full pl-10 pr-10 py-2.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm">
+                <button type="button" id="toggle-current-password" class="absolute inset-y-0 right-0 flex items-center pr-3.5" aria-label="Toggle current password visibility">
+                    <i class="fas fa-eye text-gray-400"></i>
+                </button>
+            </div>
+            <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                    <i class="fas fa-lock text-gray-400"></i>
+                </span>
+                <input type="password" id="new-password" placeholder="Password Baru" class="w-full pl-10 pr-10 py-2.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm">
+                <button type="button" id="toggle-new-password" class="absolute inset-y-0 right-0 flex items-center pr-3.5" aria-label="Toggle new password visibility">
+                    <i class="fas fa-eye text-gray-400"></i>
+                </button>
+            </div>
+            <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                    <i class="fas fa-lock text-gray-400"></i>
+                </span>
+                <input type="password" id="confirm-password" placeholder="Konfirmasi Password Baru" class="w-full pl-10 pr-10 py-2.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm">
+                <button type="button" id="toggle-confirm-password" class="absolute inset-y-0 right-0 flex items-center pr-3.5" aria-label="Toggle confirm password visibility">
+                    <i class="fas fa-eye text-gray-400"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="pt-2">
+            <button id="save-password-btn" class="w-full flex justify-center items-center h-11 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700 transition disabled:bg-gray-400 text-sm">
+                <span>Simpan Perubahan</span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Zona Berbahaya -->
+    <div class="mt-10 p-4 rounded-lg bg-red-500/5 dark:bg-red-500/10 border border-red-500/30 mx-4">
+        <h2 class="text-lg font-semibold text-red-500">Zona Berbahaya</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            Tindakan di bawah ini tidak dapat diurungkan. Lanjutkan dengan hati-hati.
+        </p>
+        <button id="delete-account-btn" class="mt-4 w-full flex justify-center items-center h-11 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition text-sm">
+            <span>Hapus Akun Saya</span>
+        </button>
+    </div>
+</div>

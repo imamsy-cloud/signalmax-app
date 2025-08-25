@@ -1,0 +1,30 @@
+<!-- File: src/pages/app/home.html (Versi Baru dengan Wadah Notifikasi) -->
+<div class="p-4 space-y-6 bg-gray-50 dark:bg-gray-900 min-h-screen">
+    
+    <div class="flex justify-between items-center">
+        <div>
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Dashboard</h1>
+            <p id="welcome-message" class="text-sm font-semibold text-gray-500 dark:text-gray-400">Selamat Datang!</p>
+        </div>
+        <div class="flex items-center space-x-4">
+            <button id="global-search-btn" class="text-gray-500 dark:text-gray-400 text-xl hover:text-primary-500 transition">
+                <i class="fas fa-search"></i>
+            </button>
+            <div class="relative">
+                <button id="notification-bell-btn" class="text-gray-500 dark:text-gray-400 text-xl hover:text-primary-500 transition">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge hidden absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- === WADAH BARU UNTUK NOTIFIKASI KONFIRMASI PEMBAYARAN === -->
+    <!-- Logika di home.js akan mengisi wadah ini jika diperlukan -->
+    <div id="payment-confirmation-container"></div>
+
+
+    <div id="home-content-wrapper" class="space-y-6">
+        <!-- Konten dinamis akan dimuat di sini oleh home.js -->
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<!-- File: src/pages/app/settings.html -->
+<!-- Versi Refactor: 2.0 -->
+<!-- Perubahan: Layout disesuaikan dengan halaman profil untuk konsistensi UI. -->
+<div class="bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <!-- Header Halaman -->
+    <div class="p-4 sticky top-0 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-sm z-10 flex items-center space-x-4">
+        <button id="back-to-profile-btn" class="text-xl h-10 w-10 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors" aria-label="Kembali ke profil">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="text-xl font-bold text-gray-800 dark:text-white">Pengaturan</h1>
+    </div>
+
+    <!-- Konten Pengaturan -->
+    <div class="p-4 space-y-6">
+        <div>
+            <h3 class="font-semibold text-gray-600 dark:text-gray-400 text-sm mb-2 px-2">Tampilan</h3>
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <div class="p-3 flex items-center justify-between">
+                    <div class="flex items-center">
+                        <i class="fas fa-palette text-primary-500 w-6 text-center"></i>
+                        <span class="ml-3 font-medium text-gray-700 dark:text-gray-200">Mode Gelap</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="settings-theme-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="font-semibold text-gray-600 dark:text-gray-400 text-sm mb-2 px-2">Lainnya</h3>
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <button id="privacy-policy-btn" class="w-full flex items-center justify-between p-3 text-left border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors rounded-t-lg">
+                    <div class="flex items-center">
+                        <i class="fas fa-file-shield text-primary-500 w-6 text-center"></i>
+                        <span class="ml-3 font-medium text-gray-700 dark:text-gray-200">Kebijakan Privasi</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </button>
+                <button id="terms-conditions-btn" class="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors rounded-b-lg">
+                    <div class="flex items-center">
+                        <i class="fas fa-file-contract text-primary-500 w-6 text-center"></i>
+                        <span class="ml-3 font-medium text-gray-700 dark:text-gray-200">Syarat & Ketentuan</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="text-center text-xs text-gray-400 dark:text-gray-500 pt-8">
+            <p>SignalMax App</p>
+            <p>Versi <span id="app-version">1.0.0</span></p>
+        </div>
+    </div>
+</div>
