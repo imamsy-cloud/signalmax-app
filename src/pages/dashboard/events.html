@@ -1,0 +1,62 @@
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+   <div class="lg:col-span-1 bg-white dark:bg-gray-800 p-5 rounded-lg shadow">
+       <h3 class="font-semibold mb-4">Buat Event Baru</h3>
+       <form id="create-event-form" class="space-y-4">
+           <div><label class="text-sm font-medium">Nama Event</label><input type="text" name="title" placeholder="e.g., Webinar Analisa Teknikal" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md"></div>
+           <div><label class="text-sm font-medium">Tipe Event</label><select name="type" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md"><option value="">Pilih Tipe</option><option value="Online">Online</option><option value="Offline">Offline</option></select></div>
+           <div><label class="text-sm font-medium">Link Event (jika online)</label><input type="url" name="link" placeholder="https://zoom.us/j/..." class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md"></div>
+           <div><label class="text-sm font-medium">Lokasi (jika offline)</label><input type="text" name="location" placeholder="e.g., Hotel Bidakara, Jakarta" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md"></div>
+           <div><label class="text-sm font-medium">Tanggal & Waktu</label><input type="datetime-local" name="eventDate" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md"></div>
+           <div><label class="text-sm font-medium">Banner Event</label><input type="file" name="image" accept="image/*" class="mt-1 w-full text-sm"></div>
+           <div><label class="text-sm font-medium">Harga</label><input type="number" name="price" placeholder="Kosongkan jika gratis" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md"></div>
+           <div><label class="text-sm font-medium">Deskripsi</label><textarea name="description" rows="4" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md"></textarea></div>
+           <button type="submit" class="w-full h-10 flex items-center justify-center bg-primary-600 text-white py-2 rounded-lg hover:bg-primary-700 font-semibold"><span>Publikasikan Event</span></button>
+       </form>
+   </div>
+   <div class="lg:col-span-2 bg-white dark:bg-gray-800 p-5 rounded-lg shadow">
+       <h3 class="font-semibold mb-4">Daftar Event</h3>
+        <div class="overflow-x-auto">
+           <table class="w-full text-sm text-left">
+               <thead class="bg-gray-50 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase text-xs">
+                   <tr>
+                        <th class="p-3">Nama Event</th>
+                        <th class="p-3">ID Event</th>
+                        <th class="p-3">Tipe</th>
+                        <th class="p-3">Tanggal</th>
+                        <th class="p-3">Status</th>
+                        <th class="p-3">Aksi</th>
+                    </tr>
+                </thead>
+               <tbody id="events-table-body">
+                   <!-- Konten diisi oleh events.js -->
+               </tbody>
+           </table>
+       </div>
+       <!-- [BARU] Wadah untuk kontrol pagination -->
+       <div id="pagination-container" class="mt-4">
+            <!-- Kontrol pagination akan dirender di sini oleh ui.js -->
+       </div>
+   </div>
+</div>
+
+<div id="edit-event-modal" class="modal-overlay hidden fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4">
+    <div class="modal-content bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-lg">
+        <div class="p-5 border-b flex justify-between items-center">
+            <h3 class="text-xl font-semibold">Edit Event</h3>
+            <button class="close-modal-btn text-2xl">&times;</button>
+        </div>
+        <form class="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
+            <div><label class="text-sm">Nama Event</label><input type="text" name="title" class="mt-1 w-full p-2 border rounded"></div>
+            <div><label class="text-sm">Tipe Event</label><select name="type" class="mt-1 w-full p-2 border rounded"><option value="Online">Online</option><option value="Offline">Offline</option></select></div>
+            <div><label class="text-sm">Link Event</label><input type="url" name="link" class="mt-1 w-full p-2 border rounded"></div>
+            <div><label class="text-sm">Lokasi Event</label><input type="text" name="location" class="mt-1 w-full p-2 border rounded"></div>
+            <div><label class="text-sm">Tanggal & Waktu</label><input type="datetime-local" name="eventDate" class="mt-1 w-full p-2 border rounded"></div>
+            <div><label class="text-sm">Harga</label><input type="number" name="price" class="mt-1 w-full p-2 border rounded"></div>
+            <div><label class="text-sm">Deskripsi</label><textarea name="description" rows="4" class="mt-1 w-full p-2 border rounded"></textarea></div>
+        </form>
+        <div class="p-4 bg-gray-50 dark:bg-gray-700/50 flex justify-end gap-3">
+            <button class="cancel-modal-btn px-4 py-2 rounded-lg">Batal</button>
+            <button class="save-modal-btn px-4 py-2 rounded-lg bg-primary-600 text-white"><span>Simpan</span></button>
+        </div>
+    </div>
+</div>
