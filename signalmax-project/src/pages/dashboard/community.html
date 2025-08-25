@@ -1,0 +1,39 @@
+<div class="bg-white dark:bg-gray-800 p-5 rounded-lg shadow">
+    <!-- Navigasi Tab -->
+    <div class="border-b border-gray-200 dark:border-gray-700 mb-4">
+       <nav class="flex space-x-4 -mb-px" aria-label="Tabs">
+           <button class="tab-link active whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm" data-target="tab-posts">
+               Manajemen Postingan
+           </button>
+           <button class="tab-link whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm" data-target="tab-stories">
+               Manajemen Stories
+           </button>
+       </nav>
+   </div>
+
+   <!-- Konten Tab Postingan -->
+   <div id="tab-posts" class="tab-content active">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="font-semibold text-lg">Daftar Postingan Feed</h3>
+            <input type="text" placeholder="Cari postingan..." class="px-3 py-1.5 bg-gray-50 dark:bg-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+        </div>
+        <div id="posts-container" class="space-y-4">
+            <!-- Konten diisi oleh community.js -->
+        </div>
+        <!-- [BARU] Wadah untuk kontrol pagination -->
+        <div id="pagination-container" class="mt-4">
+            <!-- Kontrol pagination akan dirender di sini -->
+        </div>
+   </div>
+
+   <!-- Konten Tab Stories -->
+   <div id="tab-stories" class="tab-content">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="font-semibold text-lg">Stories Aktif (24 Jam)</h3>
+            <p class="text-sm text-gray-500">Stories akan otomatis hilang setelah 24 jam.</p>
+        </div>
+        <div id="stories-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            <!-- Konten diisi oleh community.js -->
+        </div>
+   </div>
+</div>

@@ -1,0 +1,114 @@
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="lg:col-span-1 bg-white dark:bg-gray-800 p-5 rounded-lg shadow">
+        <h3 id="signal-form-title" class="font-semibold mb-4">Buat Sinyal Baru</h3>
+        <form id="signal-form" class="space-y-4">
+            <input type="hidden" id="signal-edit-id">
+            <div>
+                <label class="text-sm font-medium">Pair</label>
+                <input type="text" id="signal-pair" placeholder="e.g., BTC/USDT" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+            </div>
+            <div>
+                <label class="text-sm font-medium">Rekomendasi</label>
+                <select id="signal-action" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <option value="BUY">BUY</option>
+                    <option value="SELL">SELL</option>
+                </select>
+            </div>
+            <div>
+                <label class="text-sm font-medium">Harga Entri</label>
+                <input type="number" id="signal-entry" step="any" placeholder="Harga masuk posisi" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+            </div>
+            <div>
+                <label class="text-sm font-medium">Stop Loss (SL)</label>
+                <input type="number" id="signal-sl" step="any" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+            </div>
+            <div id="take-profit-container">
+                <label class="text-sm font-medium">Take Profit (TP)</label>
+                <div class="mt-1 space-y-2">
+                    <input type="number" name="signal_tp" step="any" placeholder="TP 1 (Wajib)" class="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <input type="number" name="signal_tp" step="any" placeholder="TP 2 (Opsional)" class="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <input type="number" name="signal_tp" step="any" placeholder="TP 3 (Opsional)" class="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                </div>
+            </div>
+            <div class="flex items-center">
+                <input type="checkbox" id="signal-is-premium" class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded">
+                <label for="signal-is-premium" class="ml-2 block text-sm">Sinyal Premium</label>
+            </div>
+            <div class="pt-2 space-y-3">
+                 <button type="button" id="send-with-notification-btn" class="w-full bg-primary-600 text-white py-2 rounded-lg hover:bg-primary-700 font-semibold flex items-center justify-center space-x-2">
+                    <i class="fas fa-bell"></i>
+                    <span>Kirim & Notifikasi</span>
+                </button>
+                <button type="button" id="send-without-notification-btn" class="w-full bg-gray-600 text-white py-2 rounded-lg hover:bg-gray-700 font-semibold flex items-center justify-center space-x-2">
+                    <i class="fas fa-save"></i>
+                    <span>Simpan Saja</span>
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="lg:col-span-2 bg-white dark:bg-gray-800 p-5 rounded-lg shadow">
+        <h3 class="font-semibold mb-4">Daftar Sinyal Terkirim</h3>
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left">
+                <thead class="bg-gray-50 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase text-xs">
+                    <tr>
+                        <th class="p-3">Pair</th>
+                        <th class="p-3">Rekomendasi</th>
+                        <th class="p-3">Entri</th>
+                        <th class="p-3">ID Sinyal</th>
+                        <th class="p-3">Status</th>
+                        <th class="p-3">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="signals-table-body">
+                    </tbody>
+            </table>
+        </div>
+        <div id="pagination-container" class="mt-4">
+            </div>
+    </div>
+</div>
+
+<div id="edit-signal-modal" class="modal-overlay hidden fixed inset-0 bg-black bg-opacity-50 z-40 p-4 items-center justify-center">
+    <div class="modal-content bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col">
+        <div class="p-5 border-b dark:border-gray-700 flex justify-between items-center">
+            <h3 id="edit-modal-title" class="text-xl font-semibold">Edit Sinyal</h3>
+            <button id="close-edit-modal-btn" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 text-2xl">&times;</button>
+        </div>
+        
+        <div class="p-6 space-y-4 overflow-y-auto">
+            <form id="edit-signal-form" class="space-y-4">
+                 <div><label class="text-sm font-medium">Pair</label><input type="text" id="modal-signal-pair" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md"></div>
+                 <div><label class="text-sm font-medium">Harga Entri</label><input type="number" id="modal-signal-entry" step="any" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md"></div>
+                 <div><label class="text-sm font-medium">Stop Loss (SL)</label><input type="number" id="modal-signal-sl" step="any" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md"></div>
+                 <div><label class="text-sm font-medium">Take Profit (TP)</label><div id="modal-tp-container" class="mt-1 space-y-2"><input type="number" name="modal_signal_tp" step="any" placeholder="TP 1" class="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md"><input type="number" name="modal_signal_tp" step="any" placeholder="TP 2" class="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md"><input type="number" name="modal_signal_tp" step="any" placeholder="TP 3" class="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md"></div></div>
+            </form>
+            
+            <div id="close-position-form-container" class="pt-4 border-t dark:border-gray-700 hidden">
+                <h4 class="font-semibold mb-3">Tutup Posisi Sinyal</h4>
+                <div class="space-y-3 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                    <div>
+                        <label class="text-sm font-medium">Hasil</label>
+                        <div class="mt-2 flex gap-4">
+                            <label class="flex items-center"><input type="radio" name="signal_result" value="Profit" class="h-4 w-4"> <span class="ml-2">Profit</span></label>
+                            <label class="flex items-center"><input type="radio" name="signal_result" value="Loss" class="h-4 w-4"> <span class="ml-2">Loss</span></label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="text-sm font-medium">Harga Penutupan (Close Price)</label>
+                        <input type="number" id="signal-close-price" step="any" placeholder="Harga saat posisi ditutup" class="mt-1 w-full px-3 py-2 bg-white dark:bg-gray-700 border rounded-md">
+                    </div>
+                    <button type="button" id="confirm-close-position-btn" class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 font-semibold">Tutup Posisi & Selesaikan Sinyal</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 bg-gray-50 dark:bg-gray-900/50 flex flex-wrap justify-end gap-3 border-t dark:border-gray-700">
+            <button id="cancel-edit-btn" class="px-4 py-2 text-sm font-semibold rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600">Batal</button>
+            <button id="update-signal-btn" class="px-4 py-2 text-sm font-semibold rounded-lg bg-primary-600 text-white hover:bg-primary-700 flex items-center space-x-2">
+                <i class="fas fa-save"></i>
+                <span>Simpan Perubahan</span>
+            </button>
+        </div>
+    </div>
+</div>

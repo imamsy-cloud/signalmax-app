@@ -1,0 +1,81 @@
+<div class="space-y-6">
+    <div>
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Manajemen Notifikasi</h2>
+        <p class="text-sm text-gray-500">Kirim pemberitahuan ke pengguna aplikasi Anda.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        <div class="lg:col-span-3 bg-white dark:bg-gray-800 p-5 rounded-lg shadow">
+            <h3 class="font-semibold text-lg border-b dark:border-gray-700 pb-3 mb-4">Kirim Notifikasi Baru</h3>
+            <form id="notification-form" class="space-y-6">
+                <div>
+                    <label class="text-sm font-medium">Target Pengguna</label>
+                    <div class="flex flex-wrap gap-4 mt-2">
+                        <label class="flex items-center"><input type="radio" name="userTarget" value="all" checked class="h-4 w-4"> <span class="ml-2">Semua Pengguna</span></label>
+                        <label class="flex items-center"><input type="radio" name="userTarget" value="premium" class="h-4 w-4"> <span class="ml-2">Hanya Premium</span></label>
+                        <label class="flex items-center"><input type="radio" name="userTarget" value="regular" class="h-4 w-4"> <span class="ml-2">Hanya Biasa (Free)</span></label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="text-sm font-medium">Tipe Notifikasi</label>
+                    <div class="flex flex-wrap gap-4 mt-2">
+                        <label class="flex items-center"><input type="radio" name="notificationType" value="content" checked class="h-4 w-4"> <span class="ml-2">Tautan Konten</span></label>
+                        <label class="flex items-center"><input type="radio" name="notificationType" value="custom" class="h-4 w-4"> <span class="ml-2">Pesan Kustom</span></label>
+                    </div>
+                </div>
+
+                <div id="form-content-link">
+                    <label for="content-id-input" class="text-sm font-medium">ID Konten, Sinyal, atau Kursus</label>
+                    <div class="flex items-center space-x-2 mt-1">
+                        <input id="content-id-input" type="text" placeholder="Tempel ID di sini..." class="flex-grow p-2 border rounded bg-gray-50 dark:bg-gray-700 font-mono text-sm">
+                        <button id="check-content-btn" type="button" class="bg-blue-600 text-white px-4 h-10 rounded-lg font-semibold hover:bg-blue-700">Cek</button>
+                    </div>
+                    <div id="content-preview-container" class="hidden mt-3 p-3 border-2 border-dashed rounded-lg">
+                        <p class="text-xs text-gray-500">Pratinjau Konten:</p>
+                        <div id="content-preview" class="flex items-center space-x-3 mt-2"></div>
+                    </div>
+                </div>
+
+                <div id="form-custom-message" class="hidden space-y-4">
+                    <div>
+                        <label for="custom-title-input" class="text-sm font-medium">Judul Notifikasi</label>
+                        <input id="custom-title-input" type="text" placeholder="e.g., Promo Spesial!" class="mt-1 w-full p-2 border rounded bg-gray-50 dark:bg-gray-700">
+                    </div>
+                    <div>
+                        <label for="custom-body-input" class="text-sm font-medium">Isi Pesan</label>
+                        <textarea id="custom-body-input" rows="3" placeholder="e.g., Dapatkan diskon 50% untuk langganan..." class="mt-1 w-full p-2 border rounded bg-gray-50 dark:bg-gray-700"></textarea>
+                    </div>
+                    <div>
+                        <label for="custom-link-input" class="text-sm font-medium">Link Tujuan (Opsional)</label>
+                        <input id="custom-link-input" type="url" placeholder="https://contoh.com/promo" class="mt-1 w-full p-2 border rounded bg-gray-50 dark:bg-gray-700">
+                    </div>
+                    </div>
+
+                <div class="pt-4 text-right">
+                    <button type="submit" id="send-notification-btn" class="bg-primary-600 text-white py-2 px-6 rounded-lg hover:bg-primary-700 font-semibold h-10 flex items-center justify-center min-w-[150px]" disabled>
+                        <span>Kirim Notifikasi</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="lg:col-span-2 bg-white dark:bg-gray-800 p-5 rounded-lg shadow">
+            <h3 class="font-semibold text-lg mb-4">Riwayat Notifikasi</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left">
+                    <thead class="bg-gray-50 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase text-xs">
+                        <tr>
+                            <th class="p-3">Pesan</th>
+                            <th class="p-3">Target</th>
+                            <th class="p-3">Waktu</th>
+                            <th class="p-3">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-table-body">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

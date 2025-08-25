@@ -1,0 +1,79 @@
+<div class="space-y-6">
+    <div class="flex justify-between items-center">
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Pengaturan Pembayaran & Paket</h2>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 p-5 rounded-lg shadow">
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6 border-b dark:border-gray-700 pb-4">
+            Atur semua detail paket premium yang akan ditampilkan kepada pengguna. Pastikan link pembayaran sudah dibuat terlebih dahulu di dashboard Mayar Anda.
+        </p>
+        
+        <form id="payment-links-form" class="space-y-8">
+            <div class="p-4 border rounded-lg">
+                <h3 class="font-semibold text-lg mb-3">Paket Mingguan</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="weekly-price" class="text-sm font-medium">Harga (Contoh: 50000)</label>
+                        <input type="number" id="weekly-price" placeholder="50000" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md">
+                    </div>
+                    <div>
+                        <label for="weekly-url" class="text-sm font-medium">URL Link Pembayaran Mayar</label>
+                        <input type="url" id="weekly-url" placeholder="https://mayar.app/p/..." class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md">
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 border rounded-lg">
+                <h3 class="font-semibold text-lg mb-3">Paket Bulanan</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                     <div>
+                        <label for="monthly-price" class="text-sm font-medium">Harga Diskon (Contoh: 160000)</label>
+                        <input type="number" id="monthly-price" placeholder="160000" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md">
+                    </div>
+                     <div>
+                        <label for="monthly-strikethrough-price" class="text-sm font-medium">Harga Coret (Contoh: 200000)</label>
+                        <input type="number" id="monthly-strikethrough-price" placeholder="200000" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md">
+                    </div>
+                    <div>
+                        <label for="monthly-discount-badge" class="text-sm font-medium">Teks Badge Diskon (Contoh: Diskon 20%)</label>
+                        <input type="text" id="monthly-discount-badge" placeholder="Diskon 20%" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md">
+                    </div>
+                    <div>
+                        <label for="monthly-url" class="text-sm font-medium">URL Link Pembayaran Mayar</label>
+                        <input type="url" id="monthly-url" placeholder="https://mayar.app/p/..." class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md">
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 border rounded-lg">
+                <h3 class="font-semibold text-lg mb-3">Paket Tahunan</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="yearly-price" class="text-sm font-medium">Harga (Contoh: 1500000)</label>
+                        <input type="number" id="yearly-price" placeholder="1500000" class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md">
+                    </div>
+                    <div>
+                        <label for="yearly-url" class="text-sm font-medium">URL Link Pembayaran Mayar</label>
+                        <input type="url" id="yearly-url" placeholder="https://mayar.app/p/..." class="mt-1 w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border rounded-md">
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 border rounded-lg bg-green-50 dark:bg-green-900/20">
+                <h3 class="font-semibold text-lg mb-3">Pengaturan Konfirmasi</h3>
+                <div>
+                    <label for="whatsapp-number" class="text-sm font-medium">Nomor WhatsApp Admin (Format: 628...)</label>
+                    <input type="text" id="whatsapp-number" placeholder="6281234567890" class="mt-1 w-full px-3 py-2 bg-white dark:bg-gray-700 border rounded-md">
+                    <p class="text-xs text-gray-500 mt-1">Awali dengan 62, jangan pakai + atau 0 di depan.</p>
+                </div>
+            </div>
+
+
+            <div class="pt-4 text-right">
+                <button type="submit" id="save-settings-btn" class="bg-primary-600 text-white py-2 px-6 rounded-lg hover:bg-primary-700 font-semibold h-10 flex items-center justify-center min-w-[120px]">
+                    <span>Simpan Pengaturan</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
