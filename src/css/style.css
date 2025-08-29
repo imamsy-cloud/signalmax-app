@@ -1,0 +1,468 @@
+/* File: src/css/style.css
+   Deskripsi: File styling utama untuk aplikasi SignalMax.
+   Versi: 5.0 (Community Page Overhaul)
+*/
+
+/* === FONTS & GLOBAL STYLES === */
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Styling untuk scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #d1d5db; /* gray-300 */
+    border-radius: 3px;
+}
+.dark ::-webkit-scrollbar-thumb {
+    background: #4b5563; /* gray-600 */
+}
+
+
+/* === UTILITY & ANIMATION CLASSES === */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.skeleton {
+    background-color: #e5e7eb; /* gray-200 */
+    border-radius: 0.375rem; /* rounded-md */
+}
+.dark .skeleton {
+    background-color: #374151; /* gray-700 */
+}
+
+
+/* === CORE LAYOUT COMPONENTS === */
+
+/* App Bottom Navigation */
+.nav-item.active {
+    color: #22c55e; /* primary-500 */
+}
+.nav-item.active i, .nav-item.active span {
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Dashboard Sidebar */
+#sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+.sidebar-link.active {
+    background-color: #16a34a; /* primary-600 */
+    color: white;
+}
+.sidebar-link.active i {
+    color: white;
+}
+
+/* Notification Badge */
+.notification-badge {
+    box-shadow: 0 0 0 2px #fff; /* White border */
+}
+.dark .notification-badge {
+    box-shadow: 0 0 0 2px #111827; /* dark:bg-gray-900 border */
+}
+
+
+/* === REUSABLE COMPONENTS === */
+
+/* Universal Modal System */
+.modal-overlay {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.modal-overlay.visible {
+    display: flex;
+    opacity: 1;
+}
+.modal-overlay > .modal-content {
+    transform: scale(0.95) translateY(10px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+.modal-overlay.visible > .modal-content {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+/* Universal Tab System */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.tab-link {
+    color: #6b7280; /* gray-500 */
+    border-color: transparent;
+}
+.tab-link:hover {
+    color: #111827; /* gray-900 */
+    border-color: #d1d5db; /* gray-300 */
+}
+.dark .tab-link { color: #9ca3af; /* gray-400 */ }
+.dark .tab-link:hover { color: #f9fafb; border-color: #4b5563; /* gray-600 */ }
+.tab-link.active {
+    border-color: #16a34a; /* primary-600 */
+    color: #16a34a; /* primary-600 */
+    font-weight: 600;
+}
+.mobile-tab-scroll {
+    display: flex;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.mobile-tab-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Form Elements */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+}
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px; width: 16px;
+    left: 4px; bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: #22c55e; /* primary-500 */
+}
+input:checked + .slider:before {
+    transform: translateX(16px);
+}
+
+.textarea-no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.textarea-no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.textarea-no-outline:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+    ring-width: 0 !important;
+}
+
+
+/* === PAGE-SPECIFIC STYLES === */
+
+/* Home Page & Premium Modal */
+.plan-option {
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.plan-option.selected {
+    border-color: #22c55e; /* Warna hijau primer */
+    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.5);
+}
+
+
+/* =================================================================== */
+/* [BARU] COMMUNITY PAGE V2 STYLES */
+/* =================================================================== */
+
+/* Story Ring dengan Gradient */
+.story-ring-v2 {
+    position: relative;
+    padding: 2px;
+}
+.story-ring-v2::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 9999px;
+    background: conic-gradient(from 180deg at 50% 50%, #f97316, #ec4899, #8b5cf6, #3b82f6, #14b8a6, #f97316);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+/* Animasi Progress Bar untuk Story Viewer */
+@keyframes progress-bar-animation {
+    from { width: 0%; } to { width: 100%; }
+}
+.animate-progress {
+    animation: progress-bar-animation 5s linear forwards;
+}
+.animate-progress.paused {
+    animation-play-state: paused;
+}
+
+/* Tombol Aksi di Kartu Postingan */
+.post-action-button {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: background-color 0.2s, color 0.2s;
+}
+.post-action-button:hover {
+    background-color: #f3f4f6;
+}
+.dark .post-action-button:hover {
+    background-color: #374151;
+}
+
+/* Animasi Tombol Suka (Like) */
+@keyframes like-animation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+.like-btn.liked i {
+    font-weight: 900; /* Solid icon */
+    color: #ef4444; /* red-500 */
+    animation: like-animation 0.5s ease;
+}
+
+/* Halaman Buat Story */
+.story-creator-view {
+    transition: transform 0.3s ease-in-out;
+}
+.story-creator-view.visible {
+    transform: translateY(0);
+}
+
+/* Styling untuk input balasan story */
+#story-reply-input {
+    background-color: rgba(38, 38, 38, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+#story-reply-input::placeholder {
+    color: #d1d5db; /* gray-300 */
+}
+
+/* =================================================================== */
+/* END OF COMMUNITY PAGE V2 STYLES */
+/* =================================================================== */
+
+
+/* Signals Page & Event Page Tabs */
+.signal-tab.active, .event-tab.active {
+    background-color: #22c55e;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+.dark .signal-tab:not(.active), .dark .event-tab:not(.active) {
+    color: #9ca3af;
+}
+.signal-card-v2 {
+    transition: all 0.2s ease-in-out;
+}
+.signal-card-v2.locked .signal-content {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    pointer-events: none;
+    user-select: none;
+}
+.signal-card-v2 .lock-overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+.signal-card-v2.locked .lock-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Profile & User Profile Page */
+.profile-header-curve {
+    border-bottom-left-radius: 50% 20%;
+    border-bottom-right-radius: 50% 20%;
+}
+.radial-chart-progress {
+    stroke-dasharray: 251.2;
+    stroke-dashoffset: 251.2;
+    transition: stroke-dashoffset 0.8s ease-out;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+/* Banner Interstitial */
+#interstitial-banner-modal.visible > div {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Animasi Highlight */
+@keyframes highlight-animation {
+    0% { background-color: rgba(34, 197, 94, 0); } /* primary-500 transparent */
+    50% { background-color: rgba(34, 197, 94, 0.2); } /* primary-500 semi-transparent */
+    100% { background-color: rgba(34, 197, 94, 0); }
+}
+.highlight {
+    animation: highlight-animation 1.5s ease-in-out;
+}
+
+/* Home Page Giant Card Layout */
+.home-giant-card {
+    aspect-ratio: 3 / 4;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+.home-giant-card:hover {
+    transform: scale(1.02);
+}
+
+/* Slide-to-Delete Notifikasi */
+.notification-item-wrapper {
+    position: relative;
+    overflow: hidden;
+    touch-action: pan-y;
+    border-radius: 0.5rem;
+}
+.notification-item-content {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+    will-change: transform;
+    background-color: inherit;
+}
+.notification-item-action {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+}
+.notification-delete-btn {
+    background-color: #ef4444; /* red-500 */
+    color: white;
+    width: 60px;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+.notification-delete-btn:hover {
+    background-color: #dc2626; /* red-600 */
+}
+
+/* Animasi Petunjuk Geser Notifikasi */
+@keyframes swipe-hint {
+    0% { transform: translateX(0); }
+    30% { transform: translateX(-50px); }
+    70% { transform: translateX(-50px); }
+    100% { transform: translateX(0); }
+}
+.swipe-hint-animation {
+    animation: swipe-hint 1.5s ease-in-out;
+    animation-delay: 0.5s;
+}
+
+/* Dashboard Admin - Pengaturan Beranda */
+#content-type-grid button {
+    transition: all 0.2s ease-in-out;
+}
+#content-type-grid button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: #f9fafb;
+}
+.dark #content-type-grid button:hover {
+    background-color: #1f2937;
+}
+#layout-style-picker > div {
+    transition: all 0.2s ease-in-out;
+}
+#layout-style-picker > div.selected {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 3px #22c55e;
+}
+#layout-style-picker > div:not(.selected):hover {
+    transform: scale(1.02);
+}
+
+/* Home Page Banner Fix */
+.banner-mobile-horizontal {
+    height: 90px;
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .banner-mobile-horizontal {
+        height: auto;
+    }
+}
+
+/* =================================================================== */
+/* [PERBAIKAN] Home Page Signal Card (Story Highlight) Fix */
+/* =================================================================== */
+
+/* Aturan ::before yang lama DIHAPUS. */
+/* Aturan baru untuk .signal-story-card. */
+.signal-story-card {
+    background: conic-gradient(from 180deg at 50% 50%, #f97316, #ec4899, #8b5cf6, #3b82f6, #14b8a6, #f97316);
+}
+
+.signal-pair-top {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #1f2937;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+}
+.dark .signal-pair-top {
+    color: #f3f4f6;
+}
+.signal-pair-bottom {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #6b7280;
+    line-height: 1;
+}
+.dark .signal-pair-bottom {
+    color: #9ca3af;
+}
