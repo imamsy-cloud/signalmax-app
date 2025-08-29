@@ -1,0 +1,135 @@
+<!-- File: src/pages/dashboard/settings.html (REWORKED) -->
+<!-- Versi: 2.0 - "Layout Cerdas & Pilihan Gaya" -->
+<!-- Deskripsi: Merombak total alur pengaturan beranda menjadi lebih visual dan intuitif. -->
+
+<div class="space-y-6">
+    <!-- Header Utama -->
+    <div class="bg-white dark:bg-gray-800 p-5 rounded-lg shadow">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-4">
+            <div>
+                <h3 class="font-semibold text-lg">Pengaturan Tampilan Beranda</h3>
+                <p class="text-sm text-gray-500">Seret untuk mengubah urutan, atau tambah bagian baru.</p>
+            </div>
+            <button id="add-section-btn" class="bg-primary-600 text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center space-x-2 hover:bg-primary-700 transition-colors">
+                <i class="fas fa-plus"></i>
+                <span>Tambah Bagian</span>
+            </button>
+        </div>
+        
+        <!-- Container untuk daftar bagian layout -->
+        <div id="homepage-layout-list" class="space-y-3 min-h-[100px]">
+            <!-- Daftar layout yang sudah ada akan dimuat di sini oleh JavaScript -->
+        </div>
+    </div>
+
+    <!-- Tombol Aksi Utama -->
+    <div class="pt-2 text-right">
+        <button id="save-layout-btn" class="bg-primary-600 text-white py-2 px-6 rounded-lg hover:bg-primary-700 font-semibold h-10 flex items-center justify-center min-w-[150px]">
+            <span>Simpan Tata Letak</span>
+        </button>
+    </div>
+</div>
+
+
+<!-- =================================================================== -->
+<!-- MODAL BARU: Langkah 1 - Pilih Tipe Konten -->
+<!-- =================================================================== -->
+<div id="select-content-type-modal" class="modal-overlay hidden fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4">
+    <div class="modal-content w-full max-w-2xl bg-white dark:bg-gray-800 rounded-lg shadow-xl">
+        <div class="p-5 border-b dark:border-gray-700 flex justify-between items-center">
+            <h3 class="text-xl font-semibold">Langkah 1: Pilih Tipe Konten</h3>
+            <button class="close-modal-btn text-2xl">&times;</button>
+        </div>
+        <div class="p-6">
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Konten apa yang ingin Anda tampilkan di beranda?</p>
+            <div id="content-type-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                <!-- Pilihan tipe konten akan diisi oleh JavaScript -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- =================================================================== -->
+<!-- MODAL BARU: Langkah 2 - Konfigurasi & Pilih Gaya -->
+<!-- =================================================================== -->
+<div id="configure-section-modal" class="modal-overlay hidden fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4">
+    <div class="modal-content w-full max-w-4xl bg-white dark:bg-gray-800 rounded-lg shadow-xl max-h-[90vh] flex flex-col">
+        <!-- Header Modal -->
+        <div class="p-5 border-b dark:border-gray-700 flex justify-between items-center flex-shrink-0">
+            <h3 id="configure-modal-title" class="text-xl font-semibold">Langkah 2: Konfigurasi Bagian</h3>
+            <button class="close-modal-btn text-2xl">&times;</button>
+        </div>
+
+        <!-- Konten Modal (Form & Pilihan Gaya) -->
+        <div class="flex-grow overflow-y-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6">
+                <!-- Kolom Kiri: Form Konfigurasi -->
+                <div class="space-y-4">
+                    <h4 class="font-semibold text-lg">Pengaturan Konten</h4>
+                    <form id="section-config-form">
+                        <div>
+                            <label for="section-title" class="text-sm font-medium">Judul Bagian</label>
+                            <input type="text" id="section-title" placeholder="e.g., Artikel Terbaru" class="mt-1 w-full p-2 border rounded bg-white dark:bg-gray-700">
+                        </div>
+
+                        <!-- Kontainer Khusus untuk Banner -->
+                        <div id="banner-config-container" class="hidden space-y-4 p-4 border rounded-lg bg-gray-50 dark:bg-gray-700/50">
+                            <div>
+                                <label class="text-sm font-medium">Gambar Banner Horizontal</label>
+                                <input type="file" id="banner-horizontal-image" accept="image/*" class="mt-1 w-full text-sm">
+                                <input type="text" id="banner-horizontal-link" placeholder="Link tujuan (opsional)" class="mt-2 w-full p-2 border rounded text-sm">
+                            </div>
+                             <div>
+                                <label class="text-sm font-medium">Gambar Banner Vertikal</label>
+                                <input type="file" id="banner-vertical-image" accept="image/*" class="mt-1 w-full text-sm">
+                                <input type="text" id="banner-vertical-link" placeholder="Link tujuan (opsional)" class="mt-2 w-full p-2 border rounded text-sm">
+                            </div>
+                        </div>
+
+                        <!-- Opsi Sumber Konten (Non-Banner) -->
+                        <div id="content-source-container" class="space-y-2">
+                            <label class="text-sm font-medium">Sumber Konten</label>
+                            <div class="flex gap-4">
+                                <label class="flex items-center"><input type="radio" name="contentSource" value="latest" checked> <span class="ml-2">Terbaru</span></label>
+                                <label class="flex items-center"><input type="radio" name="contentSource" value="manual"> <span class="ml-2">Manual</span></label>
+                            </div>
+                        </div>
+                        <div id="content-ids-container" class="hidden">
+                            <label for="content-ids" class="text-sm font-medium">ID Konten (pisahkan dengan koma)</label>
+                            <textarea id="content-ids" rows="2" class="mt-1 w-full p-2 border rounded font-mono text-sm"></textarea>
+                        </div>
+                        <div>
+                            <label for="limit" class="text-sm font-medium">Jumlah Item</label>
+                            <input type="number" id="limit" value="5" class="mt-1 w-full p-2 border rounded">
+                        </div>
+                        <div class="border-t dark:border-gray-600 pt-4 space-y-2">
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" id="show-see-all-button" class="h-4 w-4 rounded">
+                                <span class="text-sm font-medium">Tampilkan Tombol "Lihat Semua"</span>
+                            </label>
+                            <div id="see-all-link-container" class="hidden">
+                                <label for="see-all-link" class="text-sm font-medium">Link Tujuan Tombol</label>
+                                <input type="text" id="see-all-link" placeholder="e.g., signals, community" class="mt-1 w-full p-2 border rounded">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Kolom Kanan: Pilihan Gaya Visual -->
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Pilih Gaya Tampilan</h4>
+                    <div id="layout-style-picker" class="grid grid-cols-2 gap-4">
+                        <!-- Pilihan gaya akan diisi oleh JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Modal -->
+        <div class="p-4 bg-gray-50 dark:bg-gray-900/50 flex justify-end gap-3 border-t dark:border-gray-700 flex-shrink-0">
+            <button class="cancel-modal-btn px-4 py-2 text-sm rounded-lg bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500">Batal</button>
+            <button id="save-section-btn" class="px-4 py-2 text-sm rounded-lg bg-primary-600 text-white font-semibold">Simpan Bagian</button>
+        </div>
+    </div>
+</div>

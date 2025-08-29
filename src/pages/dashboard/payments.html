@@ -1,0 +1,45 @@
+<div class="bg-white dark:bg-gray-800 p-5 rounded-lg shadow">
+    <h3 class="font-semibold mb-4">Konfirmasi Pembayaran Manual</h3>
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left min-w-[640px]">
+             <thead class="bg-gray-50 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase">
+                <tr>
+                    <th class="p-3">User ID</th>
+                    <th class="p-3">Email</th>
+                    <th class="p-3">Waktu Request</th>
+                    <th class="p-3">Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="payments-table-body">
+                <tr class="border-b dark:border-gray-700" data-id="user-xyz-123" data-email="siti.a@email.com">
+                    <td class="p-3 font-mono">user-xyz-123</td>
+                    <td class="p-3">siti.a@email.com</td>
+                    <td class="p-3">2024-05-20 10:30</td>
+                    <td class="p-3">
+                        <button class="edit-payment-btn text-blue-500 hover:text-blue-700" title="Edit">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="payment-action-modal" class="modal-overlay fixed inset-0 bg-black bg-opacity-50 z-40 p-4">
+    <div class="modal-content bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-md">
+        <div class="p-5 border-b dark:border-gray-700 flex justify-between items-center">
+            <h3 class="text-xl font-semibold">Aksi Pembayaran</h3>
+            <button class="close-modal-btn text-gray-400">&times;</button>
+        </div>
+        <div class="p-6">
+            <p class="text-gray-700 dark:text-gray-300">Pilih aksi untuk permintaan pembayaran dari user:</p>
+            <p id="payment-user-info" class="font-semibold text-lg my-2 text-primary-600 dark:text-primary-400"></p>
+        </div>
+        <div class="p-4 bg-gray-50 dark:bg-gray-700/50 flex justify-end gap-3">
+            <button class="cancel-modal-btn px-4 py-2 text-sm rounded-lg bg-gray-200 hover:bg-gray-300">Batal</button>
+            <button id="delete-payment-btn" class="px-4 py-2 text-sm rounded-lg bg-red-600 text-white hover:bg-red-700">Hapus</button>
+            <button id="confirm-payment-btn" class="px-4 py-2 text-sm rounded-lg bg-green-600 text-white hover:bg-green-700">Konfirmasi</button>
+        </div>
+    </div>
+</div>
