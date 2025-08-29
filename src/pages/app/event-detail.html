@@ -1,0 +1,39 @@
+<div class="bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <div class="p-4 sticky top-0 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-sm z-10 flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+            <button id="back-to-home-btn" class="text-xl text-gray-700 dark:text-gray-200">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1 class="text-xl font-bold text-gray-800 dark:text-white">Detail Event</h1>
+        </div>
+        <button id="go-to-events-list-btn" class="text-xl text-gray-700 dark:text-gray-200" aria-label="Lihat Daftar Event">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <div id="event-detail-content">
+        <img id="event-banner" src="https://placehold.co/400x200/e0e0e0/333333?text=Loading..." alt="Event Banner" class="w-full h-48 object-cover bg-gray-200">
+        
+        <div class="p-4">
+            <h2 id="event-title" class="text-2xl font-bold text-gray-800 dark:text-white">Memuat...</h2>
+            <div class="mt-4 space-y-3 text-gray-700 dark:text-gray-300">
+                <div class="flex items-center"><i class="fas fa-calendar-alt w-6 text-primary-500"></i><span id="event-date">...</span></div>
+                <div class="flex items-center"><i class="fas fa-map-marker-alt w-6 text-primary-500"></i><span id="event-location">...</span></div>
+                <div class="flex items-center"><i class="fas fa-tag w-6 text-primary-500"></i><span id="event-price" class="font-semibold">...</span></div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t dark:border-gray-700">
+                <h3 class="font-semibold mb-2 text-gray-800 dark:text-white">Deskripsi</h3>
+                <p id="event-description" class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Memuat deskripsi...
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-4 sticky bottom-0 bg-white dark:bg-gray-800 border-t dark:border-gray-700">
+         <button id="register-event-btn" class="w-full bg-primary-600 text-white font-bold py-3 rounded-lg hover:bg-primary-700 transition">
+            Daftar Sekarang
+        </button>
+    </div>
+</div>
