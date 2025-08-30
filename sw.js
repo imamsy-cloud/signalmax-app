@@ -8,13 +8,13 @@ importScripts('https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-com
 // Inisialisasi aplikasi Firebase di dalam service worker
 // NOTE: Nilai-nilai ini tidak sensitif karena hanya untuk inisialisasi SDK.
 const firebaseConfig = {
-    apiKey: "VITE_API_KEY",
-    authDomain: "VITE_AUTH_DOMAIN",
-    projectId: "VITE_PROJECT_ID",
-    storageBucket: "VITE_STORAGE_BUCKET",
-    messagingSenderId: "VITE_MESSAGING_SENDER_ID",
-    appId: "VITE_APP_ID",
-    measurementId: "VITE_MEASUREMENT_ID"
+    apiKey: "AIzaSyBKQ-TUZGJXNGbBnndopvmRU7k09Y27a18",
+    authDomain: "app-signalmax.firebaseapp.com",
+    projectId: "app-signalmax",
+    storageBucket: "app-signalmax.firebasestorage.app",
+    messagingSenderId: "37736772936",
+    appId: "1:37736772936:web:fa6dc7c77fce564bc4af7d",
+    measurementId: "G-EVV9FSK7GB"
 };
 firebase.initializeApp(firebaseConfig);
 
